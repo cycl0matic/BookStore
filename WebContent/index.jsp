@@ -7,6 +7,6 @@
 <title>Book Store</title>
 </head>
 <body>
-	
+	<h1>This is just a server Test</h1>
 </body>
 </html>
