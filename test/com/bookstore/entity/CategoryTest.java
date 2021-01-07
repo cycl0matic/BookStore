@@ -8,22 +8,19 @@ import com.bookstore.entity.Users;
 public class CategoryTest {
 
 	public static void main(String[] args) {
-		// create User Object
-		Users user1 = new Users();
-		user1.setEmail("testmail2@gmail.com");
-		user1.setFullName("test again");
-		user1.setPassword("testPassword3");
+		// create Category Object
+		Category category1 = new Category("Book Store");
 		
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		
 		entityManager.getTransaction().begin();
-		entityManager.persist(user1);
+		entityManager.persist(category1);
 		entityManager.getTransaction().commit();
 //		entityManager.close();
 //		entityManagerFactory.close();
         //output
-		System.out.println("User1 was inserted successfully");
+		System.out.println("category1 was inserted successfully");
 	}
 
 }
