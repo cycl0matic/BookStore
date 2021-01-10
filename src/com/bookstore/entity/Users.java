@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "users", catalog = "bookstoredb")
 public class Users implements java.io.Serializable {
 
-	private Integer userId;
+	private Integer userId; //using wrappers to allow the value null
 	private String email;
 	private String password;
 	private String fullName;
