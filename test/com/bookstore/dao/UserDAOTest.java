@@ -15,7 +15,9 @@ class UserDAOTest {
 
 	@Test
 	void testCreateUsers() {
+//		creating object
 		Users user1 = new Users();
+//		setting fields
 		user1.setEmail("muhammadfakemail@gmail.com");
 		user1.setFullName("MuhammadORC");
 		user1.setPassword("Password2555");
@@ -25,7 +27,20 @@ class UserDAOTest {
 
 		UserDAO userDao = new UserDAO(entityManager);
 		user1 = userDao.create(user1);
+
+		assertTrue(user1.getUserId() > 0);
+	}
+
+	@Test
+	void testCreateUsersFieldsNotSet() {
+//		creating object
+		Users user1 = new Users();
 		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+		UserDAO userDao = new UserDAO(entityManager);
+		user1 = userDao.create(user1);
 
 		assertTrue(user1.getUserId() > 0);
 	}
