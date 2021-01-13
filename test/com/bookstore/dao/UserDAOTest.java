@@ -1,6 +1,8 @@
 package com.bookstore.dao;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -42,7 +44,7 @@ class UserDAOTest {
 	}
 
 	@Test
-	void testCreateUsersFieldsNotSet() {
+	public void testCreateUsersFieldsNotSet() {
 
 		Assertions.assertThrows(NullPointerException.class, () -> {
 			Users user1 = new Users();
@@ -51,6 +53,7 @@ class UserDAOTest {
 		});
 
 	}
+
 
 	@After
 	public static void tearDownClass() throws Exception {
