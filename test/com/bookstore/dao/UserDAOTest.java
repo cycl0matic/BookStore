@@ -1,17 +1,27 @@
 package com.bookstore.dao;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
+import org.junit.After;
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import com.bookstore.entity.Users;
 
 class UserDAOTest {
+	private static EntityManagerFactory entityManagerFactory;
+	private static EntityManager entityManager;
+	private static UserDAO userDao;
+
+	@BeforeClass
+	public static void setipClass() {
+		entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
+		entityManager = entityManagerFactory.createEntityManager();
+		userDao = new UserDAO(entityManager);
+	}
 
 	@Test
 	void testCreateUsers() {
@@ -33,16 +43,18 @@ class UserDAOTest {
 
 	@Test
 	void testCreateUsersFieldsNotSet() {
-//		creating object
-		Users user1 = new Users();
-		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		UserDAO userDao = new UserDAO(entityManager);
-		user1 = userDao.create(user1);
+		Assertions.assertThrows(NullPointerException.class, () -> {
+			Users user1 = new Users();
 
-		assertTrue(user1.getUserId() > 0);
+			user1 = userDao.create(user1);
+		});
+
 	}
 
+	@After
+	public static void tearDownClass() throws Exception {
+		entityManager.close();
+		entityManagerFactory.close();
+	}
 }
