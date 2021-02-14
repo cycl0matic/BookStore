@@ -51,15 +51,14 @@ ul li {
 			<li><a href="create_customer">New Customer</a></li>
 		</ul>
 	</div>
-	<hr width="60%">
 	<div align="center">
 		<h2>Recent Sales :</h2>
 	</div>
-	<hr width="60%">
+	<hr >
 	<div align="center">
 		<h2>Recent Reviews :</h2>
 	</div>
-	<hr width="60%">
+	<hr>
 	<div align="center">
 		<h2>Statistics :</h2>
 	</div>
